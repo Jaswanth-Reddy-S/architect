@@ -1,26 +1,40 @@
----
-layout: default
+
+Description: General Details for Page Format
 ---
 
 Text can be **bold**, _italic_, or ~~strikethrough~~.
 
-[Link to another page](./another-page.html).
+[Link to another page](https://www.youtube.com/channel/UCvScgo6mAvbMEjszK4sSj6g).
 
-There should be whitespace between paragraphs.
 
-There should be whitespace between paragraphs. We recommend including a README, or a file with information about your project.
+# Git related
 
-# Header 1
+* Fetch Recent files from Git
+- git ls-files -z | xargs -0 -n1 -I{} -- git log -1 --format="%ai {}" {} | sort > ./output.txt (where this will store all the uploaded files name data in output.txt file)
 
-This is a normal paragraph following a header. GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere.
+# Azure Devops
 
-## Header 2
+*Script to move file to Azure Repository
+```
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
+git config --global user.password "secret"
+git checkout rollback
+git add  $(Build.SourcesDirectory)/Rollback_Files/** (pushes the files to github repository)
+git status
+git commit -m "copy_files"
+git push origin rollback
+```
+[Link for the same](https://stackoverflow.com/questions/66323959/how-to-move-azure-git-repos-file-from-one-folder-to-another-folder-using-azure-d)
 
-> This is a blockquote following a header.
+## Adding a timestamp to a file
+
+> new_path = '%s_%s' % (datetime.now().strftime(FORMAT), i)
+> print(new_path)
 >
-> When something is important enough, you do it even if the odds are not in your favor.
+> Using above code,time will be genearated and stored in a variable , using this variable file name can be changed to other file like a.txt to 20211227100001_a.txt
 
-### Header 3
+### Header
 
 ```js
 // Javascript code with syntax highlighting.
