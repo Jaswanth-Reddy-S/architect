@@ -14,7 +14,7 @@ Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 # Azure Devops
 
-*Script to move file to Azure Repository
+* Script to move file to Azure Repository
 ```
 git config --global user.email "you@example.com"
 git config --global user.name "Your Name"
@@ -34,21 +34,33 @@ git push origin rollback
 >
 > Using above code,time will be genearated and stored in a variable , using this variable file name can be changed to other file like a.txt to 20211227100001_a.txt
 
-### Header
+### Reading a file different formats
 
-```js
-// Javascript code with syntax highlighting.
-var fun = function lang(l) {
-  dateformat.i18n = require('./lang/' + l)
-  return true;
-}
+```python
+f = open(path, "r")
+while(True):
+    #read next line
+    line = f.readline()
 ```
 
-```ruby
-# Ruby code with syntax highlighting
-GitHubPages::Dependencies.gems.each do |gem, version|
-  s.add_dependency(gem, "= #{version}")
-end
+```python
+def get_last_created_file(filename):
+    with open(filename) as f:
+        for line in f:
+            pass
+    return line.split(" ")[-1]
+store_file_location=get_last_created_file("./output.txt")//[2021-11-29 05:21:53 +0000 result_file.py]
+```
+To read in a csv format(if format is in [2021-11-29 05:21:53 +0000 result_file.py])
+```python
+def get_last_created_file(filename):
+            a=[]
+            with open(filename, newline='') as csvfile:
+                spamreader = csv.reader(csvfile, delimiter=' ', quotechar='|')
+                for row in spamreader:
+                    a.append(row[3])
+            return a
+store_file_location=get_last_created_file("./output.txt") 
 ```
 
 #### Header 4
