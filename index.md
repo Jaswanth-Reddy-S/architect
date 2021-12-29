@@ -63,11 +63,20 @@ def get_last_created_file(filename):
 store_file_location=get_last_created_file("./output.txt") 
 ```
 
-#### Header 4
+#### Checkin and Checkout in sharepoint using pnp powershell
 
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
-*   This is an unordered list following a header.
+Teamname represents project team name
+say for example file is present in documents under general under 3 line is the format.(shared document constant)
+Connect-PnPOnline -Url https://xxxx.sharepoint.com/sites/Teamname -Credentials (Get-Credential)
+$clientContext = Get-PnPContext
+$ListItem = Get-PnPFile -Url "/Shared Documents/General/filename.xlsx" -AsListItem
+$targetFile = $ListItem.File
+$clientContext.Load($targetFile)
+$clientContext.ExecuteQuery()
+$targetFile.CheckOut()
+$clientContext.ExecuteQuery()
+Disconnect-PnPOnline
+[Link for reference](https://www.codesharepoint.com/powershell/check-in-file-in-sharepoint-using-powershell).
 
 ##### Header 5
 
