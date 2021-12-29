@@ -69,8 +69,8 @@ Teamname represents project team name
 say for example file is present in documents under general under 3 line is the format.(shared document constant)
 There should be no space in a team name
 
-checkin- $targetFile.CheckIn("Checked In at $(Get-Date)","MinorCheckIn")
-checkout- $targetFile.CheckOut()
+* checkin- $targetFile.CheckIn("Checked In at $(Get-Date)","MinorCheckIn")
+* checkout- $targetFile.CheckOut()
 ```
 Connect-PnPOnline -Url https://xxxx.sharepoint.com/sites/Teamname -Credentials (Get-Credential)
 $clientContext = Get-PnPContext
