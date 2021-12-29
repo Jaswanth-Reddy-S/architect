@@ -68,6 +68,9 @@ store_file_location=get_last_created_file("./output.txt")
 Teamname represents project team name
 say for example file is present in documents under general under 3 line is the format.(shared document constant)
 There should be no space in a team name
+
+checkin- $targetFile.CheckIn("Checked In at $(Get-Date)","MinorCheckIn")
+checkout- $targetFile.CheckOut()
 ```
 Connect-PnPOnline -Url https://xxxx.sharepoint.com/sites/Teamname -Credentials (Get-Credential)
 $clientContext = Get-PnPContext
@@ -75,7 +78,7 @@ $ListItem = Get-PnPFile -Url "/Shared Documents/General/filename.xlsx" -AsListIt
 $targetFile = $ListItem.File
 $clientContext.Load($targetFile)
 $clientContext.ExecuteQuery()
-$targetFile.CheckOut()
+$targetFile.CheckOut() (Relplace for checkin or checkout)
 $clientContext.ExecuteQuery()
 Disconnect-PnPOnline
 ```
