@@ -6,6 +6,111 @@ Text can be **bold**, _italic_, or ~~strikethrough~~.
 
 [Link to another page](https://www.youtube.com/channel/UCvScgo6mAvbMEjszK4sSj6g).
 
+**Consists of**
+* EDA
+* Git related
+* Azure Devops
+* Adding a timestamp to a file
+* Read a file in different formats
+* Checkin and Checkout in sharepoint using pnp powershell
+
+
+# EDA
+
+| SL.NO | Activities                          | 
+|:------|:------------------------------------|
+| 1     | List                                |
+| 2     | For unique                          |
+| 3     | For rename                          |
+| 4     | Lambda                              |
+| 6     | Split rows/columns                  |
+| 7     | Drop rows/columns                   |
+| 8     | Replace particular values in column |
+| 9     | To handle missing values            |
+| 10     | Additional Information              |
+| 11     | Replace particular values in column|
+
+#### 1.List
+```
+a=[1,3,46,7]  //a[0:-1]-input              //1,3,46 -output
+a=88%         //a[0:2] or a[0:-1] -input  //88 -output
+```
+
+#### 2.For unique
+```
+df.nunique()   //for all columns
+df['column_name'].unique()  //for particular column
+df['column_name'].value_counts(normalize=True)   //for particular column
+```
+
+#### 3.For rename
+```
+df.rename(columns={'revol_util':'revol_util_percentage'},inplace=True)
+```
+
+#### 4.Lambda
+```
+df['marks']=loan['earliest_cr_line'].apply(lambda x:x[0:2])  //88%
+df['loan_status_num'] = df['loan_status'].apply(lambda x: 1 if x=='Charged Off' else 0)
+df['date']=df['issue_d'].apply(lambda x:x.split('-')[0])  //01-01-2020-input
+```
+
+#### 5.Split 
+! dates type
+```
+m, y = loan['earliest_cr_line'].str.split('-').str  //Oct-99-input
+df['issue_month']=df['issue_d'].apply(lambda x:x.split('-')[0])  
+date=loan['earliest_cr_line'].apply(lambda x:x.day/x.month/x.year) [any one] //01-01-2020-input
+month=loan['earliest_cr_line'].apply(lambda x:x[0:3])  //oct-02-2948/-input 
+```
+! percentages
+```
+df['marks']=loan['earliest_cr_line'].apply(lambda x:x[0:2])  //88%
+df['marks']=pd.Series(df['marks']).str.replace('%', '').astype(float)  //88%
+df["revol_util"] = pd.to_numeric(df["revol_util"].apply(lambda x : x.split('%')[0]))  //88% 
+(Above one pd.to_numeric will basically converts to numeric format)
+ ```
+#### 6.Drop rows/columns 
+! Based on NA values
+````
+df.dropna(axis='columns/rows/index',how='all/any',inplace=True,subset=None)
+[all - if all values in a row/column is null then row/column will be removed
+any - if any 1 value in a row/column is null then entire row/column will be removed
+inplace - if true then there is no need to assign to other variable, since the changes will be saved
+subset - if any column/row name passed then only in that column/row na values will be moved]
+````
+
+##### 6.1.Drop few rows or columns on some condition
+! Based on unique
+```
+step1: Assign to other variale of that condition
+      a=df.nunique()
+step2: Apply that condition by assigning to same variable
+      b=a[df.nunique()==1]
+step3: As below
+      df.drop(columns=list(b.index),axis='columns,inplace=True) 
+```
+
+#### 7.Replace particular values in column
+```
+df['emp_length'].replace(to_replace = ['nan'],value='OTHER',inplace = True)  //categorical column
+```
+
+#### 8.To handle missing values
+```
+df["emp_length"].fillna(df["emp_length"].mode()[0], inplace = True)          //categorical column
+df['emp_length'].replace(to_replace = ['nan'],value='OTHER',inplace = True)  //categorical column
+df["emp_length"].fillna(df["emp_length"].mean/median()[0], inplace = True)   //numerical column
+```
+#### 9.Additional information
+! To know percentage of each column missing values
+```
+missing_value_df=pd.DataFrame(list(dict(df.isnull().sum() * 100 / len(df)).items()),columns=['column','missing_percentage'])
+```
+
+
+
+
 
 # Git related
 
