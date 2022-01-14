@@ -13,7 +13,7 @@ Text can be **bold**, _italic_, or ~~strikethrough~~.
 * Adding a timestamp to a file
 * Read a file in different formats
 * Checkin and Checkout in sharepoint using pnp powershell
-
+* To replace a value in .property file or .config file
 
 # EDA
 
@@ -188,6 +188,12 @@ $clientContext.ExecuteQuery()
 Disconnect-PnPOnline
 ```
 [Link for reference](https://www.codesharepoint.com/powershell/check-in-file-in-sharepoint-using-powershell).
+
+#### To replace a value in .property file or .config file
+
+[Link for reference](https://gist.github.com/jontsai/fcd2d410612990d2e85e44a7bccfa79a)
+pass file name, variable where to be changed and the value.
+line 18 to 62 follow
 
 ##### Header 5
 
