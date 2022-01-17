@@ -14,6 +14,7 @@ Text can be **bold**, _italic_, or ~~strikethrough~~.
 * Read a file in different formats
 * Checkin and Checkout in sharepoint using pnp powershell
 * To replace a value in .property file or .config file
+* To check characters in a string like A-Z,a-z,0-9
 
 # EDA
 
@@ -194,6 +195,11 @@ Disconnect-PnPOnline
 [Link for reference](https://gist.github.com/jontsai/fcd2d410612990d2e85e44a7bccfa79a)
 pass file name, variable where to be changed and the value.
 line 18 to 62 follow
+
+#### To check characters in a string like A-Z,a-z,0-9
+
+Tried import re
+[link](https://stackoverflow.com/questions/57011986/how-to-check-that-a-string-contains-only-a-z-a-z-and-0-9-characters)
 
 ##### Header 5
 
